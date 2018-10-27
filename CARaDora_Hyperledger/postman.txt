@@ -1,0 +1,67 @@
+POST /registrar
+
+{
+  "enrollId": "admin",
+  "enrollSecret": "Xurw3yU9zI0l"
+}
+
+
+
+POST /chaincode
+
+{
+  "jsonrpc": "2.0",
+  "method": "deploy",
+  "params": {
+    "type": 1,
+    "chaincodeID":{
+        "name": "mycc"
+    },
+    "ctorMsg": {
+        "args":["init", "a", "100", "b", "200"]
+    },
+    "secureContext": "admin"
+  },
+  "id": 1
+}
+
+
+POST /chaincode
+
+{
+  "jsonrpc": "2.0",
+  "method": "invoke",
+  "params": {
+      "type": 1,
+      "chaincodeID":{
+          "name":"caradora"
+      },
+      "ctorMsg": {
+         "args":["invoke", "a", "b", "10"]
+      },
+      "secureContext": "admin"
+  },
+  "id": 3
+}
+
+
+
+POST /chaincode
+
+{
+  "jsonrpc": "2.0",
+  "method": "query",
+  "params": {
+      "type": 1,
+      "chaincodeID":{
+          "name":"mycc"
+      },
+      "ctorMsg": {
+         "args":["query", "a"]
+      },
+      "secureContext": "admin"
+  },
+  "id": 5
+}
+
+
